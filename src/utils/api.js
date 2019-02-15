@@ -103,7 +103,6 @@ const refreshToken = async (accessToken) => {
 const login = async (params = {}) => {
   // code 只能使用一次，所以每次单独调用
   let loginData = await wepy.login()
-
   // 参数中增加code
   params.code = loginData.code
 
