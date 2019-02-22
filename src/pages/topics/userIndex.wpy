@@ -21,6 +21,12 @@
     components = {
       topiclist: topicList
     }
+    // 页面重新打开的时候,如果当前页面需要刷新，则重新加载 topiclist
+    onShow() {
+      this.$parent.checkRefreshPages(this.getCurrentPages().pop().route, () => {
+        this.$invoke('topiclist', 'reload')
+      })
+    }
     onLoad(options) {
       this.requestUrl = 'users/' + options.user_id + '/topics'
       // 组件数据改变，也需要调用 this.$apply()
